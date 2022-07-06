@@ -1,0 +1,8 @@
+POST http://localhost:3005/api/auth
+Content-Type: application/json
+
+{
+  "username": "jota",
+  "email": "info@gmail.com",
+  "password": "12345"
+}
