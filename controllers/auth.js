@@ -1,4 +1,5 @@
 const authRouter = require('express').Router()
+const bcrypt = require('bcrypt')
 const User = require('../models/User')
 
 authRouter.get('/', (request, response) => {
@@ -7,19 +8,25 @@ authRouter.get('/', (request, response) => {
 
 // REGISTER
 authRouter.post('/', async (request, response, next) => {
-  const { username, email, password } = request.body
-
-  const newUser = new User({
-    username,
-    email,
-    password
-  })
-
   try {
-    const savedUSer = await newUser.save()
-    response.json(savedUSer)
+    const { email, lastName, name, username, password } = request.body
+
+    const saltRounds = 10
+    const passwordHash = await bcrypt.hash(password, saltRounds)
+
+    const user = new User({
+      email,
+      lastName,
+      name,
+      username,
+      passwordHash
+    })
+
+    const savedUser = await user.save()
+    response.status(201).json(savedUser)
   } catch (err) {
-    response.status(500).json(err)
+    console.error(err)
+    response.status(400).json(err)
   }
 })
 
