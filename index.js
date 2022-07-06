@@ -2,11 +2,12 @@ require('dotenv').config()
 require('./mongo')
 
 const express = require('express')
+const userRouter = require('./controllers/users')
 const app = express()
 
-app.get('/', (request, response) => {
-  response.send('Backend Ecommerce Test')
-})
+app.use(express.json())
+
+app.use('/api/users', userRouter)
 
 const PORT = process.env.PORT || 3005
 
