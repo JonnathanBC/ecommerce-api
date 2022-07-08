@@ -1,14 +1,14 @@
+const User = require('../models/User')
+
 const userRouter = require('express').Router()
 
-userRouter.get('/', (request, response) => {
-  response.send('Users')
+userRouter.get('/', async (request, response) => {
+  const user = await User.find({})
+  response.json(user)
 })
 
 userRouter.post('', (request, response) => {
-  const { body } = request
-  const { username } = body
 
-  console.log(username)
 })
 
 module.exports = userRouter

@@ -3,12 +3,12 @@ require('./mongo')
 
 const express = require('express')
 const userRouter = require('./controllers/users')
-const authRouter = require('./controllers/auth')
+const loginRouter = require('./controllers/login')
 const app = express()
 
 app.use(express.json())
 
-app.use('/api/auth', authRouter)
+app.use('/api/auth', loginRouter)
 app.use('/api/users', userRouter)
 
 const PORT = process.env.PORT || 3005
