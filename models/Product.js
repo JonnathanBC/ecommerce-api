@@ -26,6 +26,16 @@ const productSchema = new Schema({
   price: {
     type: String,
     required: true
+  },
+  createdAt: {
+    type: Date,
+    required: true,
+    default: new Date()
+  },
+  updatedAt: {
+    type: Date,
+    required: true,
+    default: new Date()
   }
 })
 

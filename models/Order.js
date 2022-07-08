@@ -4,14 +4,12 @@ const orderSchema = new Schema(
   {
     userId: {
       type: String,
-      required: true,
-      unique: true
+      required: true
     },
     products: [
       {
         productId: {
-          type: String,
-          required: true
+          type: String
         },
         quantity: {
           type: Number,
@@ -30,6 +28,16 @@ const orderSchema = new Schema(
     status: {
       type: String,
       default: 'pending'
+    },
+    createdAt: {
+      type: Date,
+      required: true,
+      default: new Date()
+    },
+    updatedAt: {
+      type: Date,
+      required: true,
+      default: new Date()
     }
   }
 )
