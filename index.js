@@ -8,7 +8,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/api/auth', loginRouter)
+app.use('/api/login', loginRouter)
 app.use('/api/users', userRouter)
 
 const PORT = process.env.PORT || 3005
