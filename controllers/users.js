@@ -6,11 +6,15 @@ const userRouter = require('express').Router()
 
 // get all
 userRouter.get('/', verifyTokenAndAdmin, async (request, response) => {
-  const user = await User.find({})
-  response.json(user)
+  const query = request.query.new
+  const users = query
+    ? await User.find().sort({ _id: -1 }).limit(5)
+    : await User.find({})
+
+  response.status(200).json(users)
 })
 
-// get user by id
+// get user by id (Control the data it returns)
 userRouter.get('/:id', verifyTokenAndAdmin, async (request, response) => {
   try {
     const { id } = request.params
