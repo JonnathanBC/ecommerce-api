@@ -4,8 +4,35 @@ const User = require('../models/User')
 
 const userRouter = require('express').Router()
 
+// get users stats
+userRouter.get('/stats', async (request, response) => {
+  const date = new Date()
+  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
+
+  try {
+    const data = await User.aggregate([
+      { $match: { createdAt: { $gte: lastYear } } },
+      {
+        $project: {
+          month: { $month: '$createdAt' }
+        }
+      },
+      {
+        $group: {
+          _id: '$month',
+          total: { $sum: 1 }
+        }
+      }
+    ])
+    response.status(200).json(data)
+  } catch (err) {
+    response.status(500).json({ error: err })
+  }
+  response.status(204).end()
+})
+
 // get all
-userRouter.get('/', verifyTokenAndAdmin, async (request, response) => {
+userRouter.get('/', async (request, response) => {
   const query = request.query.new
   const users = query
     ? await User.find().sort({ _id: -1 }).limit(5)
@@ -15,7 +42,7 @@ userRouter.get('/', verifyTokenAndAdmin, async (request, response) => {
 })
 
 // get user by id (Control the data it returns)
-userRouter.get('/:id', verifyTokenAndAdmin, async (request, response) => {
+userRouter.get('/:id', async (request, response) => {
   try {
     const { id } = request.params
     const user = await User.findById(id)
