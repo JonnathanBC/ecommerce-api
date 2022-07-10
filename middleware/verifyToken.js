@@ -30,7 +30,7 @@ const verifyTokenAndAuthorization = (request, response, next) => {
 
 const verifyTokenAndAdmin = (request, response, next) => {
   verifyToken(request, response, () => {
-    if (request.user.isAdmin) {p
+    if (request.user.isAdmin) {
       next()
     } else {
       response.status(403).json('You are not alowed to do that!')

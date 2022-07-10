@@ -28,7 +28,6 @@ userRouter.get('/stats', async (request, response) => {
   } catch (err) {
     response.status(500).json({ error: err })
   }
-  response.status(204).end()
 })
 
 // get all
