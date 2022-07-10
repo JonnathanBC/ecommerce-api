@@ -1,8 +1,8 @@
 
-PUT http://localhost:3005/api/users/62c77e0d97b01ad188850b00
+PUT http://localhost:3005/api/users/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzc3ZTBkOTdiMDFhZDE4ODg1MGIwMCIsInVzZXJuYW1lIjoiam9ubmF0aGFuIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjU3MzMzMzk4LCJleHAiOjE2NTc5MzgxOTh9.SFY0uOE64Ied2VlF3CXkDlg9xoIaXM8hbd-ThED2HdY
 
 {
   "isAdmin": true
 }
+
