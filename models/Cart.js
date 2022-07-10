@@ -29,6 +29,14 @@ const cartSchema = new Schema({
   }
 })
 
+cartSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+
 const Cart = model('Cart', cartSchema)
 
 module.exports = Cart
