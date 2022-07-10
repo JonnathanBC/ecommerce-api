@@ -1,0 +1,12 @@
+POST http://localhost:3005/api/products
+Content-Type: application/json
+
+{
+  "title": "Tshirt Adidas",
+  "description": "Description 4",
+  "img": "Image 4",
+  "categories": ["tshirt", "kids"],
+  "size": "S",
+  "color": "black",
+  "price": 22
+}

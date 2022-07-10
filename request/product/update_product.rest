@@ -1,0 +1,12 @@
+PUT http://localhost:3005/api/products/62cb37a1f6828f8dbcea41d3
+Content-Type: application/json
+
+{
+  "title": "Puma shoes",
+  "description": "Description update",
+  "img": "Image update",
+  "categories": ["shoes", "man"],
+  "size": "40",
+  "color": "red",
+  "price": 85
+}

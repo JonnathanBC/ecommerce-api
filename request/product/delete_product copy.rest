@@ -1,0 +1,6 @@
+
+DELETE http://localhost:3005/api/products/62cb38a5f6828f8dbcea41e0
+
+{
+
+}
